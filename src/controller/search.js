@@ -1,4 +1,4 @@
-const { isValid } = require('../controller/country');
+const { isValid, isValidYear } = require('../controller/country');
 
 
 const find = (data, country, year) => {
@@ -7,17 +7,24 @@ const find = (data, country, year) => {
         throw new Error('El pais ingresado no esta en un formato valido.')
     }
 
-    if (isNaN(year)) {
-        throw new Error('El anio debe ser un numero.')
+    let myCountry = data.find(country => country['Country Code'] === countryCode)
+
+    if (!isValidYear(myCountry, year)) {
+        throw new Error('El anio ingresado no es valido, por favor ingrese uno entre 1960 y 2019');
     }
 
-    let myCountry = data.find(country => country['Country Code'] === countryCode)
+    if (myCountry[year] === '') {
+        value = 'No hay un valor especificado.'
+    } else {
+        value = myCountry[year]
+    }
+
 
     return {
         name: myCountry['Country Name'],
         code: myCountry['Country Code'],
-        year: +year,
-        value: myCountry[+year]
+        year: year,
+        value
     }
 }
 

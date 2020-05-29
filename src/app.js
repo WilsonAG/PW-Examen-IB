@@ -16,6 +16,13 @@ file.importData(path)
             case 'mostrar':
                 let myData = find(data, country, year)
                 console.log(myData)
+                console.log(chalk.green('=============================================='))
+                console.log(chalk.green(`           Resultados de la busqueda          `))
+                console.log(chalk.green('=============================================='))
+                console.log(chalk.cyan('Nombre: ', chalk.yellow(myData.name)))
+                console.log(chalk.cyan('Codigo: ', chalk.yellow(myData.code)))
+                console.log(chalk.cyan('Anio: ', chalk.yellow(myData.year)))
+                console.log(chalk.cyan('Valor: ', chalk.yellow(myData.value)))
                 break;
 
             case 'guardar':

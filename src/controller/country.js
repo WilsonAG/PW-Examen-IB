@@ -36,11 +36,22 @@ const importData = async (file) => {
 const isValid = (countryCode) => {
     const validCodes = validCountries.code;
     let valid = validCodes.includes(countryCode);
-
     return valid;
+}
+
+const isValidYear = (country, year) => {
+    if (isNaN(year)) {
+        throw new Error('El anio debe ser un numero.')
+    }
+    let validYears = Object.keys(country)
+    validYears = validYears.map(year => +year)
+    validYears = validYears.filter(year => !isNaN(year))
+
+    return validYears.includes(year)
 }
 
 module.exports = {
     importData,
-    isValid
+    isValid,
+    isValidYear
 }
