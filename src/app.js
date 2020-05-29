@@ -5,7 +5,6 @@ const file = require('./controller/country');
 const { find, save } = require('./controller/search');
 
 let command = argv._[0];
-console.log(argv)
 let path = argv.archivo
 let country = argv.pais
 let year = argv.anio
@@ -15,7 +14,6 @@ file.importData(path)
         switch (command) {
             case 'mostrar':
                 let myData = find(data, country, year)
-                console.log(myData)
                 console.log(chalk.green('==================================================================='))
                 console.log(chalk.green(`           ${myData.title}          `))
                 console.log(chalk.green('==================================================================='))
@@ -28,6 +26,9 @@ file.importData(path)
             case 'guardar':
                 let myData2 = find(data, country, year)
                 save(myData2)
+                    .then(path => {
+                        console.log(chalk.cyan('Archivo guardado exitosamente: ', chalk.yellow(path)))
+                    })
                     .catch(err =>
                         console.log(chalk.bgRedBright.bold.whiteBright('Error al escribir archivo')))
                 break;

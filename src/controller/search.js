@@ -43,20 +43,21 @@ const save = async (searchData) => {
     Valor:  ${searchData.value}
     `
     let dir = path.resolve('./src', 'resultados')
+    let filename = `src/resultados/${searchData.code}-${searchData.year}.txt`
     if (!existsSync(dir)) {
         await fs.mkdir(dir)
         await fs.writeFile(
-            `src/resultados/${searchData.code}-${searchData.year}.txt`,
+            filename,
             data
         )
     } else {
         await fs.writeFile(
-            `src/resultados/${searchData.code}-${searchData.year}.txt`,
+            filename,
             data
         )
     }
 
-
+    return filename
 }
 
 module.exports = {
