@@ -1,0 +1,9 @@
+
+    ===================================================================
+                    Personas que usan Internet (% de la población)
+    ===================================================================
+    Nombre: Ecuador 
+    Codigo: ECU
+    Anio:   1960
+    Valor:  No hay un valor especificado.
+    

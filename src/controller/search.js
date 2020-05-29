@@ -43,23 +43,26 @@ const save = async (searchData) => {
     Anio:   ${searchData.year}
     Valor:  ${searchData.value}
     `
-    let dir = path.resolve('./src', 'resultados')
-    let filename = `src/resultados/${searchData.code}-${searchData.year}.txt`
+
+    let appDir = path.dirname(require.main.filename);
+    let dir = `${appDir}/resultados`
+    let filename = `${appDir}/resultados/${searchData.code}-${searchData.year}.txt`
     if (!existsSync(dir)) {
         await fs.mkdir(dir)
         await fs.writeFile(
             filename,
             data
         )
+        await open(filename)
     } else {
         await fs.writeFile(
             filename,
             data
         )
+        await open(filename)
     }
-    await open(filename)
 
-    return `${dir}/${searchData.code}-${searchData.year}.txt`
+    return filename
 }
 
 module.exports = {

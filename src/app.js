@@ -32,7 +32,7 @@ file.importData(path)
                         console.log(chalk.cyan('Archivo guardado exitosamente: ', chalk.yellow(path)))
                     })
                     .catch(err =>
-                        console.log(chalk.bgRedBright.bold.whiteBright('Error al escribir archivo')))
+                        console.log(chalk.bgRedBright.bold.whiteBright('Error al escribir archivo', err)))
                 break;
 
             default:
