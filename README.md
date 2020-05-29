@@ -2,7 +2,9 @@
 
 Examen del primer parcial de la asignatura de plataformas web.
 
-## Ejemplos de ejecucion
+## Usando git
+
+### Ejemplos de ejecucion
 
 `node src/app.js mostrar -h`
 ![](assets/app-mostrar.png)
@@ -16,6 +18,21 @@ Examen del primer parcial de la asignatura de plataformas web.
 
 `node src/app.js guardar -f datos.csv -y 2004 --pais USA`
 ![](assets/app-guardar-ej.png)
+
+## Usando npm 
+
+Tambien se subio a npm para un uso mucho mas facil.
+
+### Ejemplo de uso 
+
+`internet-usage-wag --help`
+
+![](assets/app-npm.png)
+
+
+
+
+
 
 
 
