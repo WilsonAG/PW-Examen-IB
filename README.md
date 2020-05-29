@@ -21,7 +21,8 @@ Examen del primer parcial de la asignatura de plataformas web.
 
 ## Usando npm 
 
-Tambien se subio a npm para un uso mucho mas facil.
+Tambien se subio a npm para un uso mucho mas facil. Puedes ir al proyecto en npm aqui: <https://www.npmjs.com/package/internet-usage-wag>
+
 
 ### Ejemplo de uso 
 
