@@ -3,7 +3,7 @@ const { promises: fs, existsSync } = require('fs');
 const path = require('path');
 
 
-const find = (data, country, year) => {
+const find = (data, country = "ECU", year) => {
     let countryCode = country.toUpperCase()
     if (!isValid(countryCode)) {
         throw new Error('El pais ingresado no esta en un formato valido.')

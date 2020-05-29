@@ -5,7 +5,7 @@ const file = require('./controller/country');
 const { find, save } = require('./controller/search');
 
 let command = argv._[0];
-
+console.log(argv)
 let path = argv.archivo
 let country = argv.pais
 let year = argv.anio

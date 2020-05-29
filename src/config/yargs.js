@@ -6,12 +6,12 @@ let options = {
 
     },
     pais: {
-        default: 1960,
+        default: 'ECU',
         alias: 'c',
         desc: 'Año que del que se busca información'
     },
     anio: {
-        default: 'ECU',
+        default: 1960,
         alias: 'y',
         desc: 'Código del país que se requiere información'
     }
