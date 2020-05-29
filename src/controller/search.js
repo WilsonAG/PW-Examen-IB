@@ -1,6 +1,7 @@
 const { isValid, isValidYear } = require('../controller/country');
 const { promises: fs, existsSync } = require('fs');
 const path = require('path');
+const open = require('open');
 
 
 const find = (data, country = "ECU", year) => {
@@ -43,7 +44,7 @@ const save = async (searchData) => {
     Valor:  ${searchData.value}
     `
     let dir = path.resolve('./src', 'resultados')
-    let filename = `src/resultados/${searchData.code}-${searchData.year}.txt`
+    let filename = `${dir}/${searchData.code}-${searchData.year}.txt`
     if (!existsSync(dir)) {
         await fs.mkdir(dir)
         await fs.writeFile(
@@ -56,6 +57,7 @@ const save = async (searchData) => {
             data
         )
     }
+    await open(filename)
 
     return filename
 }
