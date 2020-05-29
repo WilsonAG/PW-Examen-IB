@@ -1,4 +1,6 @@
 const { isValid, isValidYear } = require('../controller/country');
+const { promises: fs, existsSync } = require('fs');
+const path = require('path');
 
 
 const find = (data, country, year) => {
@@ -21,6 +23,7 @@ const find = (data, country, year) => {
 
 
     return {
+        title: myCountry['Indicator Name'],
         name: myCountry['Country Name'],
         code: myCountry['Country Code'],
         year: year,
@@ -28,6 +31,35 @@ const find = (data, country, year) => {
     }
 }
 
+
+const save = async (searchData) => {
+    let data = `
+    ===================================================================
+                    ${searchData.title}
+    ===================================================================
+    Nombre: ${searchData.name} 
+    Codigo: ${searchData.code}
+    Anio:   ${searchData.year}
+    Valor:  ${searchData.value}
+    `
+    let dir = path.resolve('./src', 'resultados')
+    if (!existsSync(dir)) {
+        await fs.mkdir(dir)
+        await fs.writeFile(
+            `src/resultados/${searchData.code}-${searchData.year}.txt`,
+            data
+        )
+    } else {
+        await fs.writeFile(
+            `src/resultados/${searchData.code}-${searchData.year}.txt`,
+            data
+        )
+    }
+
+
+}
+
 module.exports = {
-    find
+    find,
+    save
 }

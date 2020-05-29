@@ -22,7 +22,7 @@ const importData = async (file) => {
 
     csvData = csvData.filter(record => {
         if (isValid(record['Country Code'])) {
-            delete record['Indicator Name']
+            // delete record['Indicator Name']
             delete record['Indicator Code']
             delete record['field65']
             return record

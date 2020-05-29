@@ -2,7 +2,7 @@ const chalk = require('chalk');
 
 const { argv } = require('./config/yargs');
 const file = require('./controller/country');
-const { find } = require('./controller/search');
+const { find, save } = require('./controller/search');
 
 let command = argv._[0];
 
@@ -16,9 +16,9 @@ file.importData(path)
             case 'mostrar':
                 let myData = find(data, country, year)
                 console.log(myData)
-                console.log(chalk.green('=============================================='))
-                console.log(chalk.green(`           Resultados de la busqueda          `))
-                console.log(chalk.green('=============================================='))
+                console.log(chalk.green('==================================================================='))
+                console.log(chalk.green(`           ${myData.title}          `))
+                console.log(chalk.green('==================================================================='))
                 console.log(chalk.cyan('Nombre: ', chalk.yellow(myData.name)))
                 console.log(chalk.cyan('Codigo: ', chalk.yellow(myData.code)))
                 console.log(chalk.cyan('Anio: ', chalk.yellow(myData.year)))
@@ -26,7 +26,10 @@ file.importData(path)
                 break;
 
             case 'guardar':
-                console.log('guardar')
+                let myData2 = find(data, country, year)
+                save(myData2)
+                    .catch(err =>
+                        console.log(chalk.bgRedBright.bold.whiteBright('Error al escribir archivo', err)))
                 break;
 
             default:
