@@ -29,7 +29,7 @@ file.importData(path)
                 let myData2 = find(data, country, year)
                 save(myData2)
                     .catch(err =>
-                        console.log(chalk.bgRedBright.bold.whiteBright('Error al escribir archivo', err)))
+                        console.log(chalk.bgRedBright.bold.whiteBright('Error al escribir archivo')))
                 break;
 
             default:
