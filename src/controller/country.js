@@ -1,6 +1,7 @@
+const validCountries = require('../model/country.json');
+
 const csvtojson = require('csvtojson');
 const { promises: fs } = require('fs');
-
 
 const importData = async (file) => {
     const csvFile = await fs.readFile(file, 'utf-8')
@@ -19,17 +20,27 @@ const importData = async (file) => {
         throw new Error('El formato del archivo no es valido.')
     }
 
-    csvData = csvData.map(record => {
-        delete record['Indicator Name']
-        delete record['Indicator Code']
-        delete record['field65']
-        return record
+    csvData = csvData.filter(record => {
+        if (isValid(record['Country Code'])) {
+            delete record['Indicator Name']
+            delete record['Indicator Code']
+            delete record['field65']
+            return record
+        }
     });
 
     return csvData;
 }
 
 
+const isValid = (countryCode) => {
+    const validCodes = validCountries.code;
+    let valid = validCodes.includes(countryCode);
+
+    return valid;
+}
+
 module.exports = {
-    importData
+    importData,
+    isValid
 }
