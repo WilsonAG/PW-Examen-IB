@@ -7,8 +7,8 @@ Examen del primer parcial de la asignatura de plataformas web.
 ### Ejemplos de ejecucion
 
 `node src/app.js mostrar -h`
-![](assets/app-mostrar.png)
 
+![](assets/app-mostrar.png)
 
 `node src/app.js guardar -h`
 
